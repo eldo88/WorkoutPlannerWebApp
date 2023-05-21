@@ -1,5 +1,6 @@
 package com.workoutplanner.workouts;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import org.springframework.data.repository.query.Param;
 
 
@@ -67,9 +69,18 @@ public class MainController {
     }
 
     @GetMapping(path ="/all/workout")
-    public @ResponseBody Iterable<Workout> getAllWorkouts() {
+    public @ResponseBody Iterable<Workout> getAllWorkouts(Model model) {
 
+        model.addAttribute("workouts", workoutRepository);
         return workoutRepository.findAll();
+    }
+
+    //doesn't work
+    @GetMapping("/")
+    public String getWorkouts(Model model) {
+
+        model.addAttribute("workouts", workoutRepository.findAll());
+        return "index";
     }
 
     @GetMapping(path="/all/workout/find-by-name") 
@@ -83,4 +94,5 @@ public class MainController {
 
         return workoutRepository.findByWorkoutType(workoutType);
     }
+
 }
