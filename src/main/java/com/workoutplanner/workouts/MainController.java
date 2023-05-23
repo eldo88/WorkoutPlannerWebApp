@@ -4,12 +4,12 @@ package com.workoutplanner.workouts;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import org.springframework.data.repository.query.Param;
 
 
@@ -17,11 +17,11 @@ import org.springframework.data.repository.query.Param;
 //will cause PK Id fields to get out of synch
 
 @Controller
-@RequestMapping(path="/main")
+//@RequestMapping(path="/main")
 public class MainController {
 
     @Autowired
-    private UserRepository userRepository;
+    UserRepository userRepository;
 
     @PostMapping(path="/add/user")
     public @ResponseBody String addNewUser (@RequestParam String name, @RequestParam String email, Model model) {
@@ -76,7 +76,7 @@ public class MainController {
     }
 
     //doesn't work
-    @GetMapping("/")
+    @GetMapping("/index")
     public String getWorkouts(Model model) {
 
         model.addAttribute("workouts", workoutRepository.findAll());
@@ -92,6 +92,7 @@ public class MainController {
     @GetMapping(path="/all/workout/find-by-type")
     public @ResponseBody Iterable<Workout> getWorkoutByType(@Param("workoutType") String workoutType) {
 
+        //Workout workout = workoutRepository.findByWorkoutType(workoutType);
         return workoutRepository.findByWorkoutType(workoutType);
     }
 
