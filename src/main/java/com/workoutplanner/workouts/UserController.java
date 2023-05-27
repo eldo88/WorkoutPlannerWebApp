@@ -4,7 +4,6 @@ package com.workoutplanner.workouts;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,8 +34,9 @@ public class UserController {
     }
 
     @GetMapping(path ="/all/user")
-    public @ResponseBody Iterable<User> getAllUsers() {
-        // returns a JSON or XML with all users
+    public @ResponseBody Iterable<User> getAllUsers(Model model) {
+        
+        model.addAttribute("users", userRepository.findAll());
         return userRepository.findAll();
     }
 
