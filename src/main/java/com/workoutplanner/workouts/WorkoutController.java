@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.data.repository.query.Param;
@@ -16,6 +15,9 @@ public class WorkoutController {
     
     @Autowired 
     private WorkoutRepository workoutRepository;
+
+    @Autowired
+    private WorkoutService workoutService;
 
     @PostMapping(path ="/add/workout")
     public @ResponseBody String addNewWorkout (@RequestParam String workoutName, @RequestParam String workoutType, Model model) {
@@ -37,7 +39,7 @@ public class WorkoutController {
 
     
     @GetMapping("/get-all-workouts")
-    public Iterable getWorkouts(Model model) {
+    public Iterable<Workout> getWorkouts(Model model) {
 
         model.addAttribute("workouts", workoutRepository.findAll());
         return workoutRepository.findAll();
@@ -54,5 +56,11 @@ public class WorkoutController {
 
         //Workout workout = workoutRepository.findByWorkoutType(workoutType);
         return workoutRepository.findByWorkoutType(workoutType);
+    }
+
+    //works but only returns int and no JSON
+    @GetMapping(path ="/all/count")
+    public @ResponseBody Integer count(@Param("workoutType") String workoutType) {
+        return workoutService.workoutTypeCount(workoutType);
     }
 }

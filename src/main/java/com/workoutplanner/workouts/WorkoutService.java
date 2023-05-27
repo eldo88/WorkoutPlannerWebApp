@@ -1,15 +1,14 @@
 package com.workoutplanner.workouts;
 
-import java.util.ArrayList;
 import java.util.Optional;
-import java.util.Random;
 
-import org.hibernate.mapping.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class WorkoutService {
 
+    @Autowired
     private WorkoutRepository workoutRepository;
 
 
@@ -26,24 +25,19 @@ public class WorkoutService {
         return oWorkout.get();
     }
 
-    // public Workout findByWorkoutName(String workoutName) {
-    //     List<Workout> oWorkout = workoutRepository.findByWorkoutName(workoutName);
-    //     return oWorkout.get();
-    // }
-
     public Iterable<Workout> findByWorkoutName(String workoutName) {
         Iterable<Workout> iWorkout = workoutRepository.findByWorkoutName(workoutName);
         return iWorkout;
     }
 
     public int workoutTypeCount(String workoutType) {
-        int typeCount = 0;
+    
         Iterable<Workout> iWorkout = workoutRepository.findByWorkoutType(workoutType);
 
+        int typeCount = 0;
         for (Workout workout : iWorkout) {
             typeCount++;
         }
-        
         return typeCount;
     }
 
