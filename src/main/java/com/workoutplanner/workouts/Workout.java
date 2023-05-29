@@ -16,6 +16,12 @@ private String workoutName;
 
 private String workoutType;
 
+private Integer defaultSets;
+
+private Integer defaultReps;
+
+private WorkoutTargetMuscleGroup targetMuscleGroup;
+
 
     public Integer getId() {
         return this.id;
@@ -41,5 +47,28 @@ private String workoutType;
         this.workoutType = workoutType;
     }
 
+    public Integer getDefaultSets() {
+        return this.defaultSets;
+    }
+
+    public void setDefaultSets(Integer defaultSets) {
+        this.defaultSets = defaultSets;
+    }
+
+    public Integer getDefaultReps() {
+        return this.defaultReps;
+    }
+
+    public void setDefaultReps(Integer defaultReps) {
+        this.defaultReps = defaultReps;
+    }
+
+    public WorkoutTargetMuscleGroup getTargetMuscleGroup() {
+        return this.targetMuscleGroup;
+    }
+
+    public void setTargetMuscleGroup(WorkoutTargetMuscleGroup target) {
+        targetMuscleGroup = target;
+    }
 
 }
