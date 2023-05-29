@@ -20,6 +20,21 @@ public class WorkoutService {
         this.workoutRepository = workoutRepository;
     }
 
+    public void addNewWorkout(String workoutName,
+        String workoutType,
+        Integer defaultSets,
+        Integer defaultReps,
+        WorkoutTargetMuscleGroup targetMuscleGroup) {
+        
+        Workout w = new Workout();
+        w.setWorkoutName(workoutName);
+        w.setWorkoutType(workoutType);
+        w.setDefaultSets(defaultSets);
+        w.setDefaultReps(defaultReps);
+        w.setTargetMuscleGroup(targetMuscleGroup);
+        workoutRepository.save(w);
+    }
+
     public Workout findById(Integer id) {
         Optional<Workout> oWorkout = workoutRepository.findById(id);
         return oWorkout.get();

@@ -20,22 +20,14 @@ public class WorkoutController {
     private WorkoutService workoutService;
 
     @PostMapping(path ="/add/workout")
-    public @ResponseBody String addNewWorkout (
-    @RequestParam String workoutName, 
-    @RequestParam String workoutType,
-    @RequestParam Integer defaultSets, 
-    @RequestParam Integer defaultReps, 
-    @RequestParam WorkoutTargetMuscleGroup targetMuscleGroup, Model model) {
+    public @ResponseBody void addNewWorkout (
+        @RequestParam String workoutName, 
+        @RequestParam String workoutType,
+        @RequestParam Integer defaultSets, 
+        @RequestParam Integer defaultReps, 
+        @RequestParam WorkoutTargetMuscleGroup targetMuscleGroup, Model model) {
 
-        Workout w = new Workout();
-        w.setWorkoutName(workoutName);
-        w.setWorkoutType(workoutType);
-        w.setDefaultSets(defaultSets);
-        w.setDefaultReps(defaultReps);
-        w.setTargetMuscleGroup(targetMuscleGroup);
-        model.addAttribute("workoutType", w);
-        workoutRepository.save(w);
-        return "Workout Saved";
+        workoutService.addNewWorkout(workoutName, workoutType, defaultSets, defaultReps, targetMuscleGroup);
     }
 
     @GetMapping(path ="/all/workout")
