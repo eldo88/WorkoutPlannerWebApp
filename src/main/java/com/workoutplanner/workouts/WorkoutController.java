@@ -12,8 +12,8 @@ import org.springframework.data.repository.query.Param;
 
 @Controller
 public class WorkoutController {
-    
-    @Autowired 
+
+    @Autowired
     private WorkoutRepository workoutRepository;
 
     @Autowired
@@ -30,8 +30,8 @@ public class WorkoutController {
         workoutService.addNewWorkout(workoutName, workoutType, defaultSets, defaultReps, targetMuscleGroup);
     }
     
-    @GetMapping(path="/get-all-workouts")
-    public Iterable<Workout> getAllWorkouts() {
+    @GetMapping(path="/all/workout")
+    public @ResponseBody Iterable<Workout> getAllWorkouts() {
         return workoutService.getAllWorkouts();
     }
 
