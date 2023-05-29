@@ -11,4 +11,7 @@ public interface WorkoutRepository extends CrudRepository<Workout, Integer> {
 
     List<Workout> findByWorkoutType(@Param("workoutType") String workoutType);
 
+    @Override
+    List<Workout> findAll();
+
 }

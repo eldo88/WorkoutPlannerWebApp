@@ -1,7 +1,7 @@
 package com.workoutplanner.workouts;
 
 public enum WorkoutTargetMuscleGroup {
-    UPPERBODY("U"), LOWERBODY("U"), CORE("C"), WHOLEBODY("W");
+    UPPERBODY("U"), LOWERBODY("L"), CORE("C"), WHOLEBODY("W");
 
     private String code;
 

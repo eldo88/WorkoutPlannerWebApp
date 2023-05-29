@@ -29,38 +29,35 @@ public class WorkoutController {
 
         workoutService.addNewWorkout(workoutName, workoutType, defaultSets, defaultReps, targetMuscleGroup);
     }
-
-    @GetMapping(path ="/all/workout")
-    public @ResponseBody Iterable<Workout> getAllWorkouts(Model model) {
-
-        model.addAttribute("workouts", workoutRepository);
-        return workoutRepository.findAll();
-    }
-
     
-    @GetMapping("/get-all-workouts")
-    public Iterable<Workout> getWorkouts(Model model) {
-
-        model.addAttribute("workouts", workoutRepository.findAll());
-        return workoutRepository.findAll();
+    @GetMapping(path="/get-all-workouts")
+    public Iterable<Workout> getAllWorkouts() {
+        return workoutService.getAllWorkouts();
     }
 
     @GetMapping(path="/all/workout/find-by-name") 
     public @ResponseBody Iterable<Workout> getWorkoutByName(@Param("workoutName") String workoutName) {
-
-        return workoutRepository.findByWorkoutName(workoutName);
+        return workoutService.getWorkoutByName(workoutName);
     }
     
     @GetMapping(path="/all/workout/find-by-type")
     public @ResponseBody Iterable<Workout> getWorkoutByType(@Param("workoutType") String workoutType) {
+        return workoutService.getWorkoutsByType(workoutType);
+    }
 
-        //Workout workout = workoutRepository.findByWorkoutType(workoutType);
-        return workoutRepository.findByWorkoutType(workoutType);
+    @GetMapping(path="/all/workout/find-by-id")
+    public @ResponseBody Workout getById(Integer id) {
+        return workoutService.getById(id);
     }
 
     //works but only returns int and no JSON
     @GetMapping(path ="/all/count")
     public @ResponseBody Integer count(@Param("workoutType") String workoutType) {
         return workoutService.workoutTypeCount(workoutType);
+    }
+
+    @GetMapping(path = "/all/random-workout")
+    public @ResponseBody Workout randomWorkout() {
+        return workoutService.returnRandomWorkout();
     }
 }
