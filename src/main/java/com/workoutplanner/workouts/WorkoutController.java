@@ -7,14 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.data.repository.query.Param;
 
 
 @Controller
 public class WorkoutController {
-
-    @Autowired
-    private WorkoutRepository workoutRepository;
 
     @Autowired
     private WorkoutService workoutService;
@@ -36,23 +32,23 @@ public class WorkoutController {
     }
 
     @GetMapping(path="/all/workout/find-by-name") 
-    public @ResponseBody Iterable<Workout> getWorkoutByName(@Param("workoutName") String workoutName) {
+    public @ResponseBody Iterable<Workout> getWorkoutByName(@RequestParam(name = "workoutName", required = true) String workoutName) {
         return workoutService.getWorkoutByName(workoutName);
     }
     
     @GetMapping(path="/all/workout/find-by-type")
-    public @ResponseBody Iterable<Workout> getWorkoutByType(@Param("workoutType") String workoutType) {
+    public @ResponseBody Iterable<Workout> getWorkoutByType(@RequestParam(name ="workoutType", required = true) String workoutType) {
         return workoutService.getWorkoutsByType(workoutType);
     }
 
     @GetMapping(path="/all/workout/find-by-id")
-    public @ResponseBody Workout getById(Integer id) {
+    public @ResponseBody Workout getById(@RequestParam(name = "id", required = true) Integer id) {
         return workoutService.getById(id);
     }
 
     //works but only returns int and no JSON
     @GetMapping(path ="/all/count")
-    public @ResponseBody Integer count(@Param("workoutType") String workoutType) {
+    public @ResponseBody Integer count(@RequestParam(name = "workoutType", required = true) String workoutType) {
         return workoutService.workoutTypeCount(workoutType);
     }
 

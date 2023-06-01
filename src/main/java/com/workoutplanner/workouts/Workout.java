@@ -23,6 +23,21 @@ private Integer defaultReps;
 private WorkoutTargetMuscleGroup targetMuscleGroup;
 
 
+    public Workout() {
+    }
+
+
+    public Workout(Integer id, String workoutName, String workoutType, Integer defaultSets, Integer defaultReps, WorkoutTargetMuscleGroup targetMuscleGroup) {
+        this.id = id;
+        this.workoutName = workoutName;
+        this.workoutType = workoutType;
+        this.defaultSets = defaultSets;
+        this.defaultReps = defaultReps;
+        this.targetMuscleGroup = targetMuscleGroup;
+    }
+
+
+
     public Integer getId() {
         return this.id;
     }
