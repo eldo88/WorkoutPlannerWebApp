@@ -1,5 +1,6 @@
 package com.workoutplanner.workouts;
 
+import org.hibernate.mapping.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -47,9 +48,14 @@ public class WorkoutController {
     }
 
     //works but only returns int and no JSON
-    @GetMapping(path ="/all/count")
-    public @ResponseBody Integer count(@RequestParam(name = "workoutType", required = true) String workoutType) {
-        return workoutService.workoutTypeCount(workoutType);
+    // @GetMapping(path ="/all/count")
+    // public @ResponseBody Integer count(@RequestParam(name = "workoutType", required = true) WorkoutTargetMuscleGroup targetMuscleGroup) {
+    //     return workoutService.workoutTargetMuscleGroupCount(targetMuscleGroup);
+    // }
+
+    @GetMapping(path= "/all/random")
+    public @ResponseBody Iterable<Workout> random() {
+        return workoutService.returnRandomWorkoutsByTargetMuscleGroup();
     }
 
     @GetMapping(path = "/all/random-workout")

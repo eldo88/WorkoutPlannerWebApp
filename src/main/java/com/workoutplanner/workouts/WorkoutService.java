@@ -1,7 +1,10 @@
 package com.workoutplanner.workouts;
 
 import java.util.Optional;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -53,14 +56,37 @@ public class WorkoutService {
         return oWorkout.get();
     }
 
-    public int workoutTypeCount(String workoutType) {
-        Iterable<Workout> iWorkout = workoutRepository.findByWorkoutType(workoutType);
+    public int workoutTargetMuscleGroupCount(Iterable<Workout> iWorkout) {
+        //Iterable<Workout> iWorkout = workoutRepository.findByTargetMuscleGroup(targetMuscleGroup);
 
         int typeCount = 0;
         for (Workout workout : iWorkout) {
             typeCount++;
         }
         return typeCount;
+    }
+
+    public Iterable<Workout> returnRandomWorkoutsByTargetMuscleGroup() {
+
+        Random rand = new Random();
+        int randomNum;
+        List<Workout> finalRandomWorkouts = new ArrayList<>();
+
+        for (WorkoutTargetMuscleGroup TMG : WorkoutTargetMuscleGroup.values()) {
+            List<Workout> randomWorkouts = workoutRepository.findByTargetMuscleGroup(TMG);
+            int count = workoutTargetMuscleGroupCount(randomWorkouts);
+            if (count == 1) {
+                randomNum = 0;
+            }
+            else {
+                count = count - 1;
+                int min = 1;
+                randomNum = (int)Math.floor(Math.random() * (count- min + 1) + min);
+            }
+            finalRandomWorkouts.add(randomWorkouts.get(randomNum));
+        }
+        Iterable<Workout> test = finalRandomWorkouts;
+        return test;
     }
 
     public Workout returnRandomWorkout() {
