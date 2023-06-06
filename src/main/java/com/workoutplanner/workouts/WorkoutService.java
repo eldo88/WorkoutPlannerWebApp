@@ -3,8 +3,6 @@ package com.workoutplanner.workouts;
 import java.util.Optional;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -56,50 +54,65 @@ public class WorkoutService {
         return oWorkout.get();
     }
 
-    public int workoutTargetMuscleGroupCount(Iterable<Workout> iWorkout) {
-        //Iterable<Workout> iWorkout = workoutRepository.findByTargetMuscleGroup(targetMuscleGroup);
+    @SuppressWarnings("unused")
+    public int countItemsInList(Iterable<Workout> iWorkout) {
+        int count = 0;
 
-        int typeCount = 0;
         for (Workout workout : iWorkout) {
-            typeCount++;
+            count++;
         }
-        return typeCount;
+        return count;
     }
 
     public Iterable<Workout> returnRandomWorkoutsByTargetMuscleGroup() {
-
-        Random rand = new Random();
         int randomNum;
+
         List<Workout> finalRandomWorkouts = new ArrayList<>();
+        List<Workout> randomWorkouts = new ArrayList<>();
 
         for (WorkoutTargetMuscleGroup TMG : WorkoutTargetMuscleGroup.values()) {
-            List<Workout> randomWorkouts = workoutRepository.findByTargetMuscleGroup(TMG);
-            int count = workoutTargetMuscleGroupCount(randomWorkouts);
+            randomWorkouts = workoutRepository.findByTargetMuscleGroup(TMG);
+            int count = countItemsInList(randomWorkouts);
             if (count == 1) {
                 randomNum = 0;
             }
             else {
                 count = count - 1;
-                int min = 1;
+                int min = 0;
                 randomNum = (int)Math.floor(Math.random() * (count- min + 1) + min);
             }
             finalRandomWorkouts.add(randomWorkouts.get(randomNum));
+            randomWorkouts.clear();
         }
-        Iterable<Workout> test = finalRandomWorkouts;
-        return test;
+        Iterable<Workout> workouts = finalRandomWorkouts;
+
+        return workouts;
     }
 
     public Workout returnRandomWorkout() {
         long longRowCount = workoutRepository.count();
         int rowCount = (int)longRowCount;
-        int min = 1;
-
+        int min = 0;
+        rowCount = rowCount - 1;
         int randomNum = (int)Math.floor(Math.random() * (rowCount- min + 1) + min);
+
         Integer randomWorkoutID = Integer.valueOf(randomNum);
 
         List<Workout> allWorkouts = workoutRepository.findAll();
 
         return allWorkouts.get(randomWorkoutID);
+    }
+
+    public Iterable<Workout> returnAllWorkoutsByTargetMuscleGroup() {
+
+        List<Workout> workoutList = new ArrayList<>();
+       
+        for (WorkoutTargetMuscleGroup i : WorkoutTargetMuscleGroup.values()) {
+            workoutList = workoutRepository.findByTargetMuscleGroup(i);
+        }
+        Iterable<Workout> finalWorkout = workoutList;
+
+        return finalWorkout;
     }
     
 }

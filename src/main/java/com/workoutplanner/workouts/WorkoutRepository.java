@@ -13,6 +13,8 @@ public interface WorkoutRepository extends CrudRepository<Workout, Integer> {
 
     List<Workout> findByTargetMuscleGroup(WorkoutTargetMuscleGroup targetMuscleGroup);
 
+    void deleteById(Integer id);
+
     @Override
     List<Workout> findAll();
 
