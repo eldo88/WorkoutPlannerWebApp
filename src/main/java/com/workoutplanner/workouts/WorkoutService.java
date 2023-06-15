@@ -54,16 +54,6 @@ public class WorkoutService {
         return oWorkout.get();
     }
 
-    @SuppressWarnings("unused")
-    public int countItemsInList(Iterable<Workout> iWorkout) {
-        int count = 0;
-
-        for (Workout workout : iWorkout) {
-            count++;
-        }
-        return count;
-    }
-
     public Iterable<Workout> returnRandomWorkoutsByTargetMuscleGroup() {
         int randomNum;
 
@@ -72,7 +62,7 @@ public class WorkoutService {
 
         for (WorkoutTargetMuscleGroup TMG : WorkoutTargetMuscleGroup.values()) {
             randomWorkouts = workoutRepository.findByTargetMuscleGroup(TMG);
-            int count = countItemsInList(randomWorkouts);
+            int count = randomWorkouts.size();
             if (count == 1) {
                 randomNum = 0;
             }
@@ -113,6 +103,10 @@ public class WorkoutService {
         Iterable<Workout> finalWorkout = workoutList;
 
         return finalWorkout;
+    }
+
+    void deleteWorkoutById(Integer id) {
+        workoutRepository.deleteById(id);
     }
     
 }
