@@ -1,5 +1,8 @@
 package com.workoutplanner.workouts;
 
+
+import java.time.LocalDate;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,6 +23,12 @@ private Integer defaultSets;
 
 private Integer defaultReps;
 
+private Integer oneRepMax;
+
+private double workoutWeight;
+
+private LocalDate date;
+
 private WorkoutTargetMuscleGroup targetMuscleGroup;
 
 
@@ -27,12 +36,13 @@ private WorkoutTargetMuscleGroup targetMuscleGroup;
     }
 
 
-    public Workout(Integer id, String workoutName, String workoutType, Integer defaultSets, Integer defaultReps, WorkoutTargetMuscleGroup targetMuscleGroup) {
+    public Workout(Integer id, String workoutName, String workoutType, Integer defaultSets, Integer defaultReps, Integer oneRepMax, WorkoutTargetMuscleGroup targetMuscleGroup) {
         this.id = id;
         this.workoutName = workoutName;
         this.workoutType = workoutType;
         this.defaultSets = defaultSets;
         this.defaultReps = defaultReps;
+        this.oneRepMax = oneRepMax;
         this.targetMuscleGroup = targetMuscleGroup;
     }
 
@@ -78,6 +88,30 @@ private WorkoutTargetMuscleGroup targetMuscleGroup;
         this.defaultReps = defaultReps;
     }
 
+    public Integer getOneRepMax() {
+        return this.oneRepMax;
+    }
+
+    public void setOneRepMax(Integer oneRepMax) {
+        this.oneRepMax = oneRepMax;
+    }
+
+    public double getWorkoutWeight() {
+        return this.workoutWeight;
+    }
+
+    public void setWorkoutWeight(double workoutWeight) {
+        this.workoutWeight = workoutWeight;
+    }
+
+    public LocalDate getDate() {
+        return this.date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
     public WorkoutTargetMuscleGroup getTargetMuscleGroup() {
         return this.targetMuscleGroup;
     }
@@ -85,5 +119,6 @@ private WorkoutTargetMuscleGroup targetMuscleGroup;
     public void setTargetMuscleGroup(WorkoutTargetMuscleGroup target) {
         targetMuscleGroup = target;
     }
+
 
 }

@@ -1,6 +1,7 @@
 package com.workoutplanner.workouts;
 
 import java.util.Optional;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,10 +30,12 @@ public class WorkoutService {
         WorkoutTargetMuscleGroup targetMuscleGroup) {
         
         Workout w = new Workout();
+        LocalDate date = LocalDate.now();
         w.setWorkoutName(workoutName);
         w.setWorkoutType(workoutType);
         w.setDefaultSets(defaultSets);
         w.setDefaultReps(defaultReps);
+        w.setDate(date);
         w.setTargetMuscleGroup(targetMuscleGroup);
         workoutRepository.save(w);
     }
