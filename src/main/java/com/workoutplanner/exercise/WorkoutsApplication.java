@@ -1,4 +1,4 @@
-package com.workoutplanner.workouts;
+package com.workoutplanner.exercise;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

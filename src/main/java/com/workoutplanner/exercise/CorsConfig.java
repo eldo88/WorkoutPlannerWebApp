@@ -1,4 +1,4 @@
-package com.workoutplanner.workouts;
+package com.workoutplanner.exercise;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

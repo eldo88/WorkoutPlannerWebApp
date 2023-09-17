@@ -1,4 +1,4 @@
-package com.workoutplanner.workouts;
+package com.workoutplanner.exercise;
 
 import java.util.Optional;
 import java.time.LocalDate;

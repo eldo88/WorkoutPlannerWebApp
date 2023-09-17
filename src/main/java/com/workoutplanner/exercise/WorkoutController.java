@@ -1,4 +1,4 @@
-package com.workoutplanner.workouts;
+package com.workoutplanner.exercise;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

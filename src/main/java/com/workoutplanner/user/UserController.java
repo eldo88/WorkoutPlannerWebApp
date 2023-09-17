@@ -1,4 +1,4 @@
-package com.workoutplanner.workouts;
+package com.workoutplanner.user;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

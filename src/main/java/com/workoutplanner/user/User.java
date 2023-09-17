@@ -1,4 +1,4 @@
-package com.workoutplanner.workouts;
+package com.workoutplanner.user;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

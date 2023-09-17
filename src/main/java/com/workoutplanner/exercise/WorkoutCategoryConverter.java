@@ -1,4 +1,4 @@
-package com.workoutplanner.workouts;
+package com.workoutplanner.exercise;
 
 import jakarta.persistence.Converter;
 import jakarta.persistence.AttributeConverter;
