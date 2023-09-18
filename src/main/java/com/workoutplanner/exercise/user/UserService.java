@@ -1,6 +1,7 @@
 package com.workoutplanner.exercise.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -36,6 +37,18 @@ public class UserService {
 
     public void deleteById(Integer id) {
         userRepository.deleteById(id);
+    }
+
+    public User updateUser(Integer id, User user) {
+        User updateUser = userRepository.findById(id)
+        .orElseThrow(() -> new ResourceNotFoundException("User doesn't exist with id: " + id));
+
+        updateUser.setName(user.getName());
+        updateUser.setEmail(user.getEmail());
+
+        userRepository.save(updateUser);
+
+        return updateUser;
     }
     
 }

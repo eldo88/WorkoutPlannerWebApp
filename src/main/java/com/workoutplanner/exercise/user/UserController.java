@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.data.repository.query.Param;
@@ -60,6 +62,13 @@ public class UserController {
     public @ResponseBody ResponseEntity<Integer> deleteByName(@Param("id") Integer id) {
 
         userService.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PutMapping(path = "/all/users/update/{id}")
+    public @ResponseBody ResponseEntity<User> updateUser(@Param("id") Integer id, @RequestBody User updateUser) {
+
+        userService.updateUser(id, updateUser);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }
