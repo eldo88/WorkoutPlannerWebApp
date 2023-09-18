@@ -8,11 +8,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.workoutplanner.exercise.WorkoutController;
 
+
 @SpringBootTest(classes = WorkoutController.class)
 public class WorkoutControllerSmokeTest {
 
     @Autowired
     private WorkoutController workoutController;
+
 
     @Test
     public void contextLoads() throws Exception {

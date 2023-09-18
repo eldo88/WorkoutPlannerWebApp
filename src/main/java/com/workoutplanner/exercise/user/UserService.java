@@ -1,4 +1,4 @@
-package com.workoutplanner.user;
+package com.workoutplanner.exercise.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,6 +32,10 @@ public class UserService {
 
     public Iterable<User> getUserByEmail(String email) {
         return userRepository.findByEmail(email);
+    }
+
+    public void deleteById(Integer id) {
+        userRepository.deleteById(id);
     }
     
 }
