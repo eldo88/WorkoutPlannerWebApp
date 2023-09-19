@@ -40,7 +40,7 @@ public class UserService {
 
     public User updateUser(Integer id, User user) {
         User updateUser = userRepository.findById(id)
-        .orElseThrow(() -> new ResourceNotFoundException("User doesn't exist with id: " + id));
+        .orElseThrow(() -> new UserResourceNotFoundException("User doesn't exist with id: " + id));
 
         updateUser.setName(user.getName());
         updateUser.setEmail(user.getEmail());

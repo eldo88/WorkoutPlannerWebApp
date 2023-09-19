@@ -111,5 +111,27 @@ public class WorkoutService {
     void deleteWorkoutById(Integer id) {
         workoutRepository.deleteById(id);
     }
+
+    // curl -X PUT http://localhost:8080/all/workout/update/id\?id\=264 
+    // -H 'Content-type:application/json' 
+    // -d '{"workoutName": "tricep-press", "workoutType": "weights", "defaultSets": "3", "defaultReps": "10", "oneRepMax": "80", "workoutWeight": "35", "date": "2023-09-18", "targetMuscleGroup": "UPPERBODY"}'
+
+    public Workout updateWorkout(Integer id, Workout workout) {
+        Workout updateWorkout = workoutRepository.findById(id)
+        .orElseThrow(() -> new WorkoutResourceNotFoundException("Workout not found for id: " + id));
+
+        updateWorkout.setWorkoutName(workout.getWorkoutName());
+        updateWorkout.setWorkoutType(workout.getWorkoutType());
+        updateWorkout.setDefaultSets(workout.getDefaultSets());
+        updateWorkout.setDefaultReps(workout.getDefaultReps());
+        updateWorkout.setOneRepMax(workout.getOneRepMax());
+        updateWorkout.setWorkoutWeight(workout.getWorkoutWeight());
+        updateWorkout.setDate(workout.getDate());
+        updateWorkout.setTargetMuscleGroup(workout.getTargetMuscleGroup());
+
+        workoutRepository.save(updateWorkout);
+
+        return updateWorkout;
+    }
     
 }

@@ -65,6 +65,8 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    // curl -X PUT http://localhost:8080/all/users/update/id\?id\=209 -H 'Content-type:application/json' -d '{"name": "Samwise", "email": "test@bearer.com"}'
+
     @PutMapping(path = "/all/users/update/{id}")
     public @ResponseBody ResponseEntity<User> updateUser(@Param("id") Integer id, @RequestBody User updateUser) {
 
