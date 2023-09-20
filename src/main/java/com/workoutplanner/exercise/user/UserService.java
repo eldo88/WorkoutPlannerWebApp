@@ -16,11 +16,9 @@ public class UserService {
 
     }
 
-    public void addNewUser(String name, String email) {
-        User n = new User();
-        n.setName(name);
-        n.setEmail(email);
-        userRepository.save(n);
+    public User addNewUser(User newUser) {
+
+        return userRepository.save(newUser);
         //return "User Saved";
         // TODO: add JWT to send JSON token back to browser to validate input
     }

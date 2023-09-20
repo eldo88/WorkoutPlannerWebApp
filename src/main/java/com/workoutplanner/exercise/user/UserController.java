@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.data.repository.query.Param;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
@@ -38,8 +39,12 @@ public class UserController {
     UserModelAssembler assembler;
 
     @PostMapping(path="/add/user")
-    public @ResponseBody void addNewUser (@RequestParam String name, @RequestParam String email) {
-        userService.addNewUser(name, email);
+    public ResponseEntity<?> addNewUser (@RequestBody User newUser) {
+        EntityModel<User> entityModel = assembler.toModel(userService.addNewUser(newUser));
+
+        return ResponseEntity
+        .created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri())
+        .body(entityModel);
     }
 
     @GetMapping(path="/user/{id}")
