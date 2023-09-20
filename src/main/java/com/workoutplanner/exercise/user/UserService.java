@@ -1,5 +1,8 @@
 package com.workoutplanner.exercise.user;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,8 +25,10 @@ public class UserService {
         // TODO: add JWT to send JSON token back to browser to validate input
     }
 
-    public Iterable<User> getAllUsers() {
-        return userRepository.findAll();
+    public List<User> getAllUsers() {
+        List<User> users = new ArrayList<>();
+        userRepository.findAll().forEach(users::add);
+        return users;
     }
 
     public Iterable<User> getUsersByName(String name) {
@@ -36,6 +41,12 @@ public class UserService {
 
     public void deleteById(Integer id) {
         userRepository.deleteById(id);
+    }
+
+    public User findById(Integer id) {
+        User user = userRepository.findById(id)
+        .orElseThrow(() -> new UserResourceNotFoundException("User not found for id" + id));
+        return user;
     }
 
     public User updateUser(Integer id, User user) {
