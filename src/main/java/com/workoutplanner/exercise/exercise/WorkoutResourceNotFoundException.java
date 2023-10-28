@@ -1,4 +1,4 @@
-package com.workoutplanner.exercise;
+package com.workoutplanner.exercise.exercise;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

@@ -1,4 +1,4 @@
-package com.workoutplanner.exercise;
+package com.workoutplanner.exercise.exercise;
 
 import org.springframework.data.repository.CrudRepository;
 import java.util.List;
