@@ -9,15 +9,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Workout {
+public class Exercise {
     
 @Id
 @GeneratedValue(strategy = GenerationType.AUTO)
 private Integer id;
 
-private String workoutName;
+private String exerciseName;
 
-private String workoutType;
+private String exerciseType;
 
 private Integer defaultSets;
 
@@ -25,21 +25,21 @@ private Integer defaultReps;
 
 private Integer oneRepMax;
 
-private double workoutWeight;
+private double Weight;
 
 private LocalDate date;
 
-private WorkoutTargetMuscleGroup targetMuscleGroup;
+private ExerciseTargetMuscleGroup targetMuscleGroup;
 
 
-    public Workout() {
+    public Exercise() {
     }
 
 
-    public Workout(Integer id, String workoutName, String workoutType, Integer defaultSets, Integer defaultReps, Integer oneRepMax, WorkoutTargetMuscleGroup targetMuscleGroup) {
+    public Exercise(Integer id, String exerciseName, String exerciseType, Integer defaultSets, Integer defaultReps, Integer oneRepMax, ExerciseTargetMuscleGroup targetMuscleGroup) {
         this.id = id;
-        this.workoutName = workoutName;
-        this.workoutType = workoutType;
+        this.exerciseName = exerciseName;
+        this.exerciseType = exerciseType;
         this.defaultSets = defaultSets;
         this.defaultReps = defaultReps;
         this.oneRepMax = oneRepMax;
@@ -56,20 +56,20 @@ private WorkoutTargetMuscleGroup targetMuscleGroup;
         this.id = id;
     }
 
-    public String getWorkoutName() {
-        return this.workoutName;
+    public String getExerciseName() {
+        return this.exerciseName;
     }
 
-    public void setWorkoutName(String workoutName) {
-        this.workoutName = workoutName;
+    public void setExerciseName(String Name) {
+        this.exerciseName = Name;
     }
 
-    public String getWorkoutType() {
-        return this.workoutType;
+    public String getExerciseType() {
+        return this.exerciseType;
     }
 
-    public void setWorkoutType(String workoutType) {
-        this.workoutType = workoutType;
+    public void setExerciseType(String Type) {
+        this.exerciseType = Type;
     }
 
     public Integer getDefaultSets() {
@@ -96,12 +96,12 @@ private WorkoutTargetMuscleGroup targetMuscleGroup;
         this.oneRepMax = oneRepMax;
     }
 
-    public double getWorkoutWeight() {
-        return this.workoutWeight;
+    public double getExerciseWeight() {
+        return this.Weight;
     }
 
-    public void setWorkoutWeight(double workoutWeight) {
-        this.workoutWeight = workoutWeight;
+    public void setExerciseWeight(double Weight) {
+        this.Weight = Weight;
     }
 
     public LocalDate getDate() {
@@ -112,11 +112,11 @@ private WorkoutTargetMuscleGroup targetMuscleGroup;
         this.date = date;
     }
 
-    public WorkoutTargetMuscleGroup getTargetMuscleGroup() {
+    public ExerciseTargetMuscleGroup getTargetMuscleGroup() {
         return this.targetMuscleGroup;
     }
 
-    public void setTargetMuscleGroup(WorkoutTargetMuscleGroup target) {
+    public void setExerciseTargetMuscleGroup(ExerciseTargetMuscleGroup target) {
         targetMuscleGroup = target;
     }
 

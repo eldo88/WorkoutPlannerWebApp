@@ -5,10 +5,10 @@ import jakarta.persistence.AttributeConverter;
 import java.util.stream.Stream;
 
 @Converter(autoApply = true)
-public class WorkoutCategoryConverter implements AttributeConverter<WorkoutTargetMuscleGroup, String> {
+public class ExerciseCategoryConverter implements AttributeConverter<ExerciseTargetMuscleGroup, String> {
 
     @Override
-    public String convertToDatabaseColumn(WorkoutTargetMuscleGroup targetMuscleGroup) {
+    public String convertToDatabaseColumn(ExerciseTargetMuscleGroup targetMuscleGroup) {
         if (targetMuscleGroup == null) {
             return null;
         }
@@ -16,12 +16,12 @@ public class WorkoutCategoryConverter implements AttributeConverter<WorkoutTarge
     }
 
     @Override
-    public WorkoutTargetMuscleGroup convertToEntityAttribute(String code) {
+    public ExerciseTargetMuscleGroup convertToEntityAttribute(String code) {
         if (code == null) {
             return null;
         }
 
-        return Stream.of(WorkoutTargetMuscleGroup.values())
+        return Stream.of(ExerciseTargetMuscleGroup.values())
         .filter(c-> c.getCode().equals(code))
         .findFirst()
         .orElseThrow(IllegalArgumentException::new);

@@ -6,19 +6,19 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.workoutplanner.exercise.exercise.WorkoutController;
+import com.workoutplanner.exercise.exercise.ExerciseController;
 
 
-@SpringBootTest(classes = WorkoutController.class)
-public class WorkoutControllerSmokeTest {
+@SpringBootTest(classes = ExerciseController.class)
+public class ExerciseControllerSmokeTest {
 
     @Autowired
-    private WorkoutController workoutController;
+    private ExerciseController exerciseController;
 
 
     @Test
     public void contextLoads() throws Exception {
-        assertThat(workoutController).isNotNull();
+        assertThat(exerciseController).isNotNull();
     }
     
 }

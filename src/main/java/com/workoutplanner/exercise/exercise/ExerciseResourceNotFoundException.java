@@ -4,9 +4,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(value = HttpStatus.NOT_FOUND)
-public class WorkoutResourceNotFoundException extends RuntimeException{
+public class ExerciseResourceNotFoundException extends RuntimeException{
 
-    public WorkoutResourceNotFoundException(String message){
+    public ExerciseResourceNotFoundException(String message){
         super(message);
     }
 }

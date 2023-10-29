@@ -1,11 +1,11 @@
 package com.workoutplanner.exercise.exercise;
 
-public enum WorkoutTargetMuscleGroup {
+public enum ExerciseTargetMuscleGroup {
     UPPERBODY("U"), LOWERBODY("L"), CORE("C"), WHOLEBODY("W");
 
     private String code;
 
-    private WorkoutTargetMuscleGroup(String code) {
+    private ExerciseTargetMuscleGroup(String code) {
         this.code = code;
     }
 
