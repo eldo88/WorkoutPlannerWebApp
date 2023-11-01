@@ -1,5 +1,7 @@
 package com.workoutplanner.exercise.user_created_workout;
 
-public class UserCreatedWorkoutRepository {
+import org.springframework.data.repository.CrudRepository;
+
+public interface UserCreatedWorkoutRepository extends CrudRepository<UserCreatedWorkout, Integer> {
     
 }
