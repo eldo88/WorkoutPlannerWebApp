@@ -19,7 +19,7 @@ public class UserCreatedWorkout {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="workout_id")
-    Integer id;
+    private Integer id;
 
     @OneToMany(mappedBy = "userCreatedWorkout")
     private Set<Exercise> exercises;
