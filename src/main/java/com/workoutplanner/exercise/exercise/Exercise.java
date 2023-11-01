@@ -3,16 +3,22 @@ package com.workoutplanner.exercise.exercise;
 
 import java.time.LocalDate;
 
+import com.workoutplanner.exercise.user_created_workout.UserCreatedWorkout;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Exercise {
     
 @Id
 @GeneratedValue(strategy = GenerationType.AUTO)
+@Column(name="exercise_id")
 private Integer id;
 
 private String exerciseName;
@@ -30,6 +36,10 @@ private double Weight;
 private LocalDate date;
 
 private ExerciseTargetMuscleGroup targetMuscleGroup;
+
+@ManyToOne
+@JoinColumn(name="workout_id", nullable = false)
+UserCreatedWorkout userCreatedWorkout;
 
 
     public Exercise() {
