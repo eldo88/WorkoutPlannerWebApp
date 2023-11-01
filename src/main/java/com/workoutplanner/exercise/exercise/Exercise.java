@@ -38,7 +38,7 @@ private LocalDate date;
 private ExerciseTargetMuscleGroup targetMuscleGroup;
 
 @ManyToOne
-@JoinColumn(name="workout_id", nullable = false)
+@JoinColumn(name="userCreatedWorkout", nullable = false)
 UserCreatedWorkout userCreatedWorkout;
 
 
