@@ -19,7 +19,7 @@ public class Exercise {
 @Id
 @GeneratedValue(strategy = GenerationType.AUTO)
 @Column(name="exercise_id")
-private Integer id;
+private Integer exerciseId;
 
 private String exerciseName;
 
@@ -39,7 +39,7 @@ private ExerciseTargetMuscleGroup targetMuscleGroup;
 
 @ManyToOne
 @JoinColumn(name="userCreatedWorkout", nullable = false)
-UserCreatedWorkout userCreatedWorkout;
+private UserCreatedWorkout userCreatedWorkout;
 
 
     public Exercise() {
@@ -47,7 +47,7 @@ UserCreatedWorkout userCreatedWorkout;
 
 
     public Exercise(Integer id, String exerciseName, String exerciseType, Integer defaultSets, Integer defaultReps, Integer oneRepMax, ExerciseTargetMuscleGroup targetMuscleGroup) {
-        this.id = id;
+        this.exerciseId = id;
         this.exerciseName = exerciseName;
         this.exerciseType = exerciseType;
         this.defaultSets = defaultSets;
@@ -59,11 +59,11 @@ UserCreatedWorkout userCreatedWorkout;
 
 
     public Integer getId() {
-        return this.id;
+        return this.exerciseId;
     }
 
     public void setId(Integer id) {
-        this.id = id;
+        this.exerciseId = id;
     }
 
     public String getExerciseName() {
