@@ -10,6 +10,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
+import java.time.LocalDate;
 import java.util.Set;
 
 import com.workoutplanner.exercise.exercise.Exercise;
@@ -30,5 +31,55 @@ public class UserCreatedWorkout {
 
     @OneToMany(mappedBy = "userCreatedWorkout")
     private Set<Exercise> exercises;
+
+    private String workoutName;
+
+    private LocalDate createdDate;
+
+
+    public UserCreatedWorkout() {
+    }
+
+
+    public Integer getWorkoutId() {
+        return this.workoutId;
+    }
+
+    public void setWorkoutId(Integer workoutId) {
+        this.workoutId = workoutId;
+    }
+
+    public User getUser() {
+        return this.user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Set<Exercise> getExercises() {
+        return this.exercises;
+    }
+
+    public void setExercises(Set<Exercise> exercises) {
+        this.exercises = exercises;
+    }
+
+    public String getWorkoutName() {
+        return this.workoutName;
+    }
+
+    public void setWorkoutName(String workoutName) {
+        this.workoutName = workoutName;
+    }
+
+    public LocalDate getCreatedDate() {
+        return this.createdDate;
+    }
+
+    public void setCreatedDate(LocalDate createdDate) {
+        this.createdDate = createdDate;
+    }
+
     
 }
