@@ -11,7 +11,8 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 import java.time.LocalDate;
-import java.util.Set;
+import java.util.List;
+
 
 import com.workoutplanner.exercise.exercise.Exercise;
 import com.workoutplanner.exercise.user.User;
@@ -30,7 +31,7 @@ public class UserCreatedWorkout {
     private User user;
 
     @OneToMany(mappedBy = "userCreatedWorkout")
-    private Set<Exercise> exercises;
+    private List<Exercise> exercises;
 
     private String workoutName;
 
@@ -57,11 +58,11 @@ public class UserCreatedWorkout {
         this.user = user;
     }
 
-    public Set<Exercise> getExercises() {
+    public List<Exercise> getExercises() {
         return this.exercises;
     }
 
-    public void setExercises(Set<Exercise> exercises) {
+    public void setExercises(List<Exercise> exercises) {
         this.exercises = exercises;
     }
 
