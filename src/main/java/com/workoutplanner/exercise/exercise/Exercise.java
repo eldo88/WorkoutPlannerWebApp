@@ -3,15 +3,15 @@ package com.workoutplanner.exercise.exercise;
 
 import java.time.LocalDate;
 
-import com.workoutplanner.exercise.user_created_workout.UserCreatedWorkout;
+// import com.workoutplanner.exercise.user_created_workout.UserCreatedWorkout;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+// import jakarta.persistence.JoinColumn;
+// import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Exercise {
@@ -37,9 +37,11 @@ private LocalDate date;
 
 private ExerciseTargetMuscleGroup targetMuscleGroup;
 
-@ManyToOne
-@JoinColumn(name="userCreatedWorkout", nullable = false)
-private UserCreatedWorkout userCreatedWorkout;
+
+// Not sure below is needed, relationship isn't bidirectional
+// @ManyToOne
+// @JoinColumn(name="userCreatedWorkout", nullable = false)
+// private UserCreatedWorkout userCreatedWorkout;
 
 
     public Exercise() {

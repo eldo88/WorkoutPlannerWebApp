@@ -19,7 +19,7 @@ public class UserService {
     public User addNewUser(User newUser) {
 
         return userRepository.save(newUser);
-        //return "User Saved";
+        //return "User Id";
         // TODO: add JWT to send JSON token back to browser to validate input
     }
 

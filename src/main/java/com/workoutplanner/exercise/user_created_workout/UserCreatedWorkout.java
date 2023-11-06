@@ -15,7 +15,6 @@ import java.util.List;
 
 
 import com.workoutplanner.exercise.exercise.Exercise;
-import com.workoutplanner.exercise.user.User;
 
 @Entity
 @Table(name="user_created_workout")
@@ -27,11 +26,11 @@ public class UserCreatedWorkout {
     private Integer workoutId;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "userId")
+    private Integer userId;
 
-    @OneToMany(mappedBy = "userCreatedWorkout")
-    private List<Exercise> exercises;
+    @OneToMany(mappedBy = "exerciseId")
+    private List<Integer> exerciseIds;
 
     private String workoutName;
 
@@ -42,6 +41,12 @@ public class UserCreatedWorkout {
     }
 
 
+    public UserCreatedWorkout(Integer userId, List<Integer> exerciseIds, String workoutName) {
+        this.userId = userId;
+        this.exerciseIds = exerciseIds;
+        this.workoutName = workoutName;
+    }
+
     public Integer getWorkoutId() {
         return this.workoutId;
     }
@@ -50,20 +55,20 @@ public class UserCreatedWorkout {
         this.workoutId = workoutId;
     }
 
-    public User getUser() {
-        return this.user;
+    public Integer getUser() {
+        return this.userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser(Integer userId) {
+        this.userId = userId;
     }
 
-    public List<Exercise> getExercises() {
-        return this.exercises;
+    public List<Integer> getExerciseIds() {
+        return this.exerciseIds;
     }
 
-    public void setExercises(List<Exercise> exercises) {
-        this.exercises = exercises;
+    public void setExercises(List<Integer> exerciseIds) {
+        this.exerciseIds = exerciseIds;
     }
 
     public String getWorkoutName() {
