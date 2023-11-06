@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 // import com.workoutplanner.exercise.exercise.Exercise;
 import com.workoutplanner.exercise.exercise.ExerciseService;
 import com.workoutplanner.exercise.user.User;
 
+@Service
 public class UserCreatedWorkoutService {
 
     @Autowired 
