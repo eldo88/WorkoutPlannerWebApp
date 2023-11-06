@@ -1,17 +1,19 @@
 package com.workoutplanner.exercise.user_created_workout;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 import java.time.LocalDate;
 import java.util.List;
+
+import com.workoutplanner.exercise.user.User;
 
 
 // import com.workoutplanner.exercise.exercise.Exercise;
@@ -26,10 +28,10 @@ public class UserCreatedWorkout {
     private Integer workoutId;
 
     @ManyToOne
-    @JoinColumn(name = "userId")
-    private Integer userId;
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    @OneToMany(mappedBy = "exerciseId")
+    @ElementCollection
     private List<Integer> exerciseIds;
 
     private String workoutName;
@@ -41,8 +43,8 @@ public class UserCreatedWorkout {
     }
 
 
-    public UserCreatedWorkout(Integer userId, List<Integer> exerciseIds, String workoutName) {
-        this.userId = userId;
+    public UserCreatedWorkout(User user, List<Integer> exerciseIds, String workoutName) {
+        this.user= user;
         this.exerciseIds = exerciseIds;
         this.workoutName = workoutName;
     }
@@ -55,12 +57,12 @@ public class UserCreatedWorkout {
         this.workoutId = workoutId;
     }
 
-    public Integer getUser() {
-        return this.userId;
+    public User getUser() {
+        return this.user;
     }
 
-    public void setUser(Integer userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public List<Integer> getExerciseIds() {

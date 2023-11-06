@@ -6,23 +6,22 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
-// import java.util.List;
+import java.util.List;
 
-// import com.workoutplanner.exercise.user_created_workout.UserCreatedWorkout;
+import com.workoutplanner.exercise.user_created_workout.UserCreatedWorkout;
 
 @Entity
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @OneToMany(mappedBy = "user")
     private Integer userId;
 
     private String name;
 
     private String email;
 
-    // @OneToMany(mappedBy = "user")
-    // private List<UserCreatedWorkout> userCreatedWorkouts;
+    @OneToMany(mappedBy = "user")
+    private List<UserCreatedWorkout> userCreatedWorkouts;
 
     protected User() {
     }

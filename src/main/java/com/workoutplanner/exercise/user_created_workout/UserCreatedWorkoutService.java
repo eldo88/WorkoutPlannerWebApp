@@ -20,8 +20,8 @@ public class UserCreatedWorkoutService {
     @Autowired
     User user;
 
-    public void createWorkout(Integer userId, String workoutName, List<Integer> exerciseIds) {
-        UserCreatedWorkout userCreatedWorkout = new UserCreatedWorkout(userId, exerciseIds, workoutName);
+    public void createWorkout(User user, String workoutName, List<Integer> exerciseIds) {
+        UserCreatedWorkout userCreatedWorkout = new UserCreatedWorkout(user, exerciseIds, workoutName);
 
         userCreatedWorkoutRepository.save(userCreatedWorkout);
     }
