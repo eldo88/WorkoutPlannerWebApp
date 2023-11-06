@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.workoutplanner.exercise.exercise.Exercise;
+// import com.workoutplanner.exercise.exercise.Exercise;
 import com.workoutplanner.exercise.exercise.ExerciseService;
 import com.workoutplanner.exercise.user.User;
 

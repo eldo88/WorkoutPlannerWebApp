@@ -14,7 +14,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 
-import com.workoutplanner.exercise.exercise.Exercise;
+// import com.workoutplanner.exercise.exercise.Exercise;
 
 @Entity
 @Table(name="user_created_workout")
