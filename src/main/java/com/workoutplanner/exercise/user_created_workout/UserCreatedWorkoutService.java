@@ -1,5 +1,6 @@
 package com.workoutplanner.exercise.user_created_workout;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,8 +24,12 @@ public class UserCreatedWorkoutService {
     public void createWorkout(Integer userId, String workoutName, List<Integer> exerciseIds) {
         User user = new User();
 
+        LocalDate date = LocalDate.now();
+
         user.setId(userId);
         UserCreatedWorkout userCreatedWorkout = new UserCreatedWorkout(user, exerciseIds, workoutName);
+
+        userCreatedWorkout.setCreatedDate(date);
 
         userCreatedWorkoutRepository.save(userCreatedWorkout);
     }
