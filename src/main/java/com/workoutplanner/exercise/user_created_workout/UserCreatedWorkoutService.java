@@ -19,10 +19,11 @@ public class UserCreatedWorkoutService {
     @Autowired
     ExerciseService exerciseService;
 
-    @Autowired
-    User user;
 
-    public void createWorkout(User user, String workoutName, List<Integer> exerciseIds) {
+    public void createWorkout(Integer userId, String workoutName, List<Integer> exerciseIds) {
+        User user = new User();
+
+        user.setId(userId);
         UserCreatedWorkout userCreatedWorkout = new UserCreatedWorkout(user, exerciseIds, workoutName);
 
         userCreatedWorkoutRepository.save(userCreatedWorkout);

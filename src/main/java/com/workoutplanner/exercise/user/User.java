@@ -23,7 +23,7 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<UserCreatedWorkout> userCreatedWorkouts;
 
-    protected User() {
+    public User() {
     }
 
 
