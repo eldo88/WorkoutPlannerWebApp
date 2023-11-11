@@ -58,6 +58,8 @@ public class UserService {
 
         updateUser.setName(user.getName());
         updateUser.setEmail(user.getEmail());
+        updateUser.setUserName(user.getUserName());
+        updateUser.setAdmin(user.isAdmin());
 
         userRepository.save(updateUser);
 
