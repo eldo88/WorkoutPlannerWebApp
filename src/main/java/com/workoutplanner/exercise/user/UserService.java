@@ -1,5 +1,6 @@
 package com.workoutplanner.exercise.user;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +18,10 @@ public class UserService {
     }
 
     public User addNewUser(User newUser) {
+
+        LocalDate date = LocalDate.now();
+
+        newUser.setCreatedDate(date);
 
         return userRepository.save(newUser);
         //return "User Id";
