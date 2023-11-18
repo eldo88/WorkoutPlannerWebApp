@@ -34,6 +34,10 @@ public class User {
     public User() {
     }
 
+    public User(Integer userId) {
+        this.userId = userId;
+    } 
+
     public User(Integer id, String name, String email, String userName, boolean isAdmin) {
         this.userId = id;
         this.name = name;

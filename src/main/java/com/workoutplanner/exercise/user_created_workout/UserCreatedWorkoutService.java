@@ -33,6 +33,26 @@ public class UserCreatedWorkoutService {
         userCreatedWorkoutRepository.save(userCreatedWorkout);
     }
 
+    public UserCreatedWorkout createdWorkout(UserCreatedWorkout userCreatedWorkout) {
+        
+        User userWhoCreated = userCreatedWorkout.getUser();
+        Integer userId = userWhoCreated.getId();
+        User user = userService.findById(userId);
+
+        List<Integer> exerciseIds = userCreatedWorkout.getExerciseIds();
+
+        String workoutName = userCreatedWorkout.getWorkoutName();
+
+        LocalDate date = LocalDate.now();
+
+        UserCreatedWorkout createdWorkout = new UserCreatedWorkout(user, exerciseIds, workoutName);
+
+        //Add date to UCW constructor
+        createdWorkout.setCreatedDate(date);
+        
+        return userCreatedWorkoutRepository.save(createdWorkout);
+    }
+
     public Iterable<UserCreatedWorkout> getUserWorkouts(Integer userId) {
         User user = userService.findById(userId);
         List<UserCreatedWorkout>userWorkouts = userCreatedWorkoutRepository.findByUser(user);
