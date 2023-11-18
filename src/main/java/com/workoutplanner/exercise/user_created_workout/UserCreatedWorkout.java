@@ -47,6 +47,8 @@ public class UserCreatedWorkout {
         this.user= user;
         this.exerciseIds = exerciseIds;
         this.workoutName = workoutName;
+        LocalDate date = LocalDate.now();
+        this.createdDate = date;
     }
 
     public Integer getWorkoutId() {

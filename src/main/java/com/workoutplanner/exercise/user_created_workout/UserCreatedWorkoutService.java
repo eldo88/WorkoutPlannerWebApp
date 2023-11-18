@@ -43,13 +43,8 @@ public class UserCreatedWorkoutService {
 
         String workoutName = userCreatedWorkout.getWorkoutName();
 
-        LocalDate date = LocalDate.now();
-
         UserCreatedWorkout createdWorkout = new UserCreatedWorkout(user, exerciseIds, workoutName);
 
-        //Add date to UCW constructor
-        createdWorkout.setCreatedDate(date);
-        
         return userCreatedWorkoutRepository.save(createdWorkout);
     }
 
